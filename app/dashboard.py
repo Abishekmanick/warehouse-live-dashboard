@@ -76,7 +76,7 @@ def main() -> None:
 
     # --- Locate a SKU ---
     st.subheader("🔍 Locate an item")
-    sku_options = sorted([s for s in df["sku"].unique() if s])
+    sku_options = sorted([s for s in df["sku"].unique() if isinstance(s, str) and s.strip()])
     selected_sku = st.selectbox("Choose a SKU", ["-- select --"] + sku_options)
     if selected_sku != "-- select --":
         matches = df[df["sku"] == selected_sku]
